@@ -1,4 +1,4 @@
-#define N 1000
+#define N 100
 
 @test
 subroutine oneByOneTest()
@@ -64,4 +64,29 @@ subroutine NByNTest()
 
     call mm(mtx1, mtx2, mtx3, stat)
     @assertEqual(mtx3, mtx3)
+end
+
+@test
+subroutine ordinaryCaseTest()
+    use mult
+    use pfunit_mod
+    implicit none
+    real(kind=8) ::mtx1(3,5), mtx2(5,6), mtx3(3,6), mtx4(3,6)
+    integer(kind=4) ::stat
+    mtx1=reshape((/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15/), (/3,5/))
+    mtx2=reshape((/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30/), (/5,6/))
+    mtx4=reshape((/135,150,165,310,350,390,485,550,615,660,750,840,835,950,1065,1010,1150,1290/), (/3,6/))
+    call mm(mtx1, mtx2, mtx3, stat)
+    @assertEqual(mtx4, mtx3)
+end
+
+@test
+subroutine wrongSizeTest()
+    use mult
+    use pfunit_mod
+    implicit none
+    real(kind=8) ::mtx1(3,5), mtx2(5,6), mtx3(2,7)
+    integer(kind=4) ::stat
+    call mm(mtx1, mtx2, mtx3, stat)
+    @assertEqual(stat, 1.d0)
 end
