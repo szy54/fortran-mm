@@ -21,15 +21,15 @@ module mult
             m2=size(multiply, dim=2)
 
 #ifdef DOT
-                    write(*,*) "using dot"
+                    !write(*,*) "using dot"
 #else
-                    write(*,*) "not using dot"
+                    !write(*,*) "not using dot"
 #endif
 
 #ifdef CACHE
-                    write(*,*) "using cache"
+                    !write(*,*) "using cache"
 #else
-                    write(*,*) "not using cache"
+                    !write(*,*) "not using cache"
 #endif
             if(f2 == s1 .AND. f1==m1 .AND. s2==m2) then
 
