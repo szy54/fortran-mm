@@ -3,7 +3,7 @@ F90_VENDOR = Intel
 
 include $(PFUNIT)/include/base.mk
 
-FFLAGS += -std08 -warn all -pedantic -I$(PFUNIT)/mod
+FFLAGS += -std08 -fpp -warn all -pedantic -I$(PFUNIT)/mod
 LIBS = $(PFUNIT)/lib/libpfunit$(LIB_EXT)
 
 PFS = $(wildcard *.pf)
